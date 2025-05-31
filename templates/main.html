@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Gemini LLM</title>
+        <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    </head>
+    <body>
+        <div class="container">
+            <h1>Consolidated Application</h1>
+            <form action="/gemini" method="post">
+                <input type="submit" value="Chatbot by Gemini">
+            </form>
+            <form action="/paynow" method="post">
+                <input type="submit" value="Transfer Money">
+            </form>
+            <form action="/start_telegram" method="post">
+                <input type="submit" value="Start Telegram Bot">
+            </form>
+            <form action="/stop_telegram" method="post">
+                <input type="submit" value="Stop Telegram Bot">
+            </form>
+            <form action="/prediction" method="post">
+                <input type="submit" value="Perform Prediction">
+            </form>
+            <form action="/database" method="post">
+                <input type="submit" value="Access Database">
+            </form>
+            <form action="/" method="post">
+                <input type="submit" value="Logout">
+            </form>
+        </div>
+    </body>
+</html>

@@ -1,0 +1,6 @@
+flask
+gunicorn
+google-genai
+python-dotenv
+pysqlite3
+requests

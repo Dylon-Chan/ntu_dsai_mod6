@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Gemini LLM</title>
+        <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    </head>
+    <body>
+        <div class="db-container">
+            <h1>Users Database</h1>
+            <p>List of Users:</p>
+            <ul class="db-list">
+                {% if users %}
+                {% for user in users %}
+                    <li class="db-item">Username: {{ user[0] }} - Time: {{ user[1] }}</li>
+                {% endfor %}
+                {% else %}
+                    <li class="db-item">No users found</li>
+                {% endif %}
+            </ul>
+            <form action="/clear_users" method="post">
+                <input type="submit" value="Delete User Logs">
+            </form>
+            <form action="/main" method="get">
+                <input type="submit" value="Back to Main Page">
+            </form>
+        </div>
+    </body>
+</html>

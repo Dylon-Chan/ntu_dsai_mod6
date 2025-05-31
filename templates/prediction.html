@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Share Price Prediction</title>
+        <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    </head>
+    <body>
+        <div class="container">
+            <h1>DBS Share Price Prediction</h1>
+            <form action="/predicted_price" method="post">
+                <p>Enter the exchange rate USD to SGD</p>
+                <input type="number" step="0.01" name="usd_sgd" placeholder="Enter USD-SGD rate here...">
+                {% if prediction %}
+                    <div class="prediction-box">
+                        <p>Predicted DBS Share Price:</p>
+                        <p>{{ prediction }}</p>
+                    </div>
+                {% endif %}
+                {% if error %}
+                    <div class="error">{{ error }}</div>
+                {% endif %}
+                <input type="submit" value="Submit">
+            </form>
+            <form action="/main" method="get">
+                <input type="submit" value="Back to Main Page">
+            </form>
+        </div>
+    </body>
+</html>

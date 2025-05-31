@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Gemini LLM</title>
+        <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    </head>
+    <body>
+        <div class="container">
+            <h1>Stop Telegram Bot</h1>
+            {% if error %}
+                <p>{{ error }}</p>
+            {% else %}
+                <p>Your telegram bot has stopped successfully.</p>
+            {% endif %}
+            <form action="/main" method="get">
+                <input type="submit" value="Back to Main Page">
+            </form>
+        </div>
+    </body>
+</html>
