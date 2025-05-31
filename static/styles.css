@@ -134,6 +134,7 @@ p {
 
 .response-box {
     max-height: 400px;
+    max-width: 600px;
     overflow: auto;
     text-align: left;
 }
