@@ -3,16 +3,20 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Gemini LLM</title>
+        <title>Gemini Chatbot</title>
         <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
     </head>
     <body>
         <div class="container">
             <h1>Chatbot by Gemini</h1>
-            <form action="/gemini_reply/" method="post">
-                <textarea name="prompt" class="prompt-box" placeholder="Enter your input here..."></textarea>
+            <form action="/gemini_reply" method="post">
+                <label for="prompt">Enter your prompt:</label>
+                <textarea id="prompt" name="prompt" class="prompt-box" placeholder="Enter your input here..." required></textarea>
                 <input type="submit" value="Submit">
             </form>
+            {% if error %}
+                <p class="error">{{ error }}</p>
+            {% endif %}
             <form action="/main" method="get">
                 <input type="submit" value="Back to Main Page">
             </form>

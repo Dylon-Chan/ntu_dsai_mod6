@@ -82,12 +82,15 @@ def clear_users():
     return redirect('/database')
 
 def get_gemini_response(prompt):
-    client = genai.Client(api_key=Config.GEMINI_API_KEY)
-    model = 'gemini-2.0-flash'
-    response = client.models.generate_content(
-        model=model, contents=prompt
-    )
-    return response.text
+    try:
+        client = genai.Client(api_key=Config.GEMINI_API_KEY)
+        model = 'gemini-2.0-flash'
+        response = client.models.generate_content(
+            model=model, contents=prompt
+        )
+        return response.text
+    except Exception as e:
+        return f"Error: Unable to get response from Gemini AI. {str(e)}"
 
 @app.route('/gemini/', methods=['GET', 'POST'])
 def gemini():
@@ -95,10 +98,11 @@ def gemini():
 
 @app.route('/gemini_reply/', methods=['GET', 'POST'])
 def gemini_reply():
-    if request.method == 'POST':
-        prompt = request.form.get('prompt')
-        gemini_response = get_gemini_response(prompt)
-        return render_template('gemini_reply.html', gemini_response=gemini_response)
+    prompt = request.form.get('prompt')
+    if not prompt or prompt.strip() == '':
+        return render_template('gemini.html', error="Please enter a prompt.")
+    gemini_response = get_gemini_response(prompt)
+    return render_template('gemini_reply.html', gemini_response=gemini_response)
 
 
 telegram_api_key = Config.TELEGRAM_API_KEY

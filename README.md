@@ -78,20 +78,26 @@ This project is a Flask web application developed for the **NTU SCTP Data Scienc
 ```bash
 python app.py
 ```
+The application will be available at `http://localhost:5000`
+
 
 **Production Mode:**
-```bash
-gunicorn app:app
-```
 
-The application will be available at `http://localhost:5000`
+Deploying the application on Render.com:
+- Create a new web service
+- Set the build command to `pip install -r requirements.txt`
+- Set the start command to `gunicorn app:app`
+- Select instance type to be `Free`
+- Set the environment variables of `GEMINI_API_KEY`, `TELEGRAM_API_KEY`, and `TELEGRAM_DOMAIN_URL`
+- Deploy the application
+
 
 ### Application Routes
 
 - **`/`** - Home page
 - **`/main`** - Main application interface with user registration
-- **`/database`** - View all users login history
-- **`/gemini/`** - Gemini AI chat interface
+- **`/database`** - View all user login history
+- **`/gemini`** - Gemini AI chat interface
 - **`/prediction`** - Price prediction tool
 - **`/paynow`** - Web3 PayNow interface
 - **`/start_telegram`** - Start Telegram bot webhook
@@ -100,7 +106,7 @@ The application will be available at `http://localhost:5000`
 ## File Structure
 
 ```
-gemini_tryout/
+ntu_dsai_mod6/
 ├── app.py                 # Main Flask application
 ├── config.py             # Configuration and environment variables
 ├── requirements.txt      # Python dependencies
